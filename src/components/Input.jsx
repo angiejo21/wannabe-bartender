@@ -12,7 +12,7 @@ function Input() {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="searchDrink" className="text-stone-100">
-        What are you in the mood for?
+        Di cosa hai voglia?
       </label>
       <input
         type="text"
