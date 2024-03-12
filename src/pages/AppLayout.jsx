@@ -9,7 +9,7 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   return (
-    <div className="min-h-screen bg-stone-950 font-mono grid grid-rows-[max-content_1fr_max-content]">
+    <div className="grid min-h-screen grid-rows-[max-content_1fr_max-content] bg-stone-950 font-mono">
       <Header />
       {isLoading ? <Spinner /> : <Outlet />}
       <Footer />

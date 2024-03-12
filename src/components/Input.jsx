@@ -27,7 +27,7 @@ function Input({ setDrinks }) {
         name="searchDrink"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="text-stone-950 bg-stone-100 rounded-full px-2 outline-none ring ring-stone-100 ring-offset-3 focus:ring-rose-700 transition-all"
+        className="ring-offset-3 rounded-full bg-stone-100 px-2 text-stone-950 outline-none ring ring-stone-100 transition-all focus:ring-rose-700"
       ></input>
     </div>
   );

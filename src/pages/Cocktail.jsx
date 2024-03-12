@@ -7,10 +7,10 @@ function Cocktail() {
 
   return (
     <>
-      <main className="flex flex-col justify-start items-center p-5 ">
+      <main className="flex flex-col items-center justify-start p-5 ">
         <Link
           to="/"
-          className=" bg-stone-50 bg-opacity-5 text-stone-50 py-4 px-8 rounded-xl mb-5 hover:text-rose-700 active:text-rose-700 hover:bg-opacity-0 transition-all"
+          className=" mb-5 rounded-xl bg-stone-50 bg-opacity-5 px-8 py-4 text-stone-50 transition-all hover:bg-opacity-0 hover:text-rose-700 active:text-rose-700"
         >
           &larr; Indietro
         </Link>

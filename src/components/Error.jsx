@@ -5,15 +5,15 @@ function Error() {
   const error = useRouteError();
 
   return (
-    <div className="min-h-screen bg-stone-950 font-mono flex p-5 justify-center items-center">
-      <div className="bg-stone-50 bg-opacity-5 text-stone-50 py-4 px-8 rounded-xl flex flex-col items-center gap-3">
+    <div className="flex min-h-screen items-center justify-center bg-stone-950 p-5 font-mono">
+      <div className="flex flex-col items-center gap-3 rounded-xl bg-stone-50 bg-opacity-5 px-8 py-4 text-stone-50">
         <h2 className="text-xl">Ops.. qualcosa è andato storto 😢</h2>
-        <p className="bg-red-400 px-2 rounded-sm text-red-800">
+        <p className="rounded-sm bg-red-400 px-2 text-red-800">
           {error.data || error.message}
         </p>
         <button
           onClick={() => navigate(-1)}
-          className="py-2 px-5 rounded-xl border-2 hover:border-transparent active:border-transparent border-rose-900 hover:bg-rose-700 active:bg-rose-700 hover:bg-opacity-50 transition-all"
+          className="rounded-xl border-2 border-rose-900 px-5 py-2 transition-all hover:border-transparent hover:bg-rose-700 hover:bg-opacity-50 active:border-transparent active:bg-rose-700"
         >
           &larr; Indietro
         </button>

@@ -16,8 +16,8 @@ function Home() {
 
   return (
     <>
-      <main className="flex flex-col justify-center items-center py-5">
-        <div className=" bg-stone-50 bg-opacity-5 text-stone-50 py-4 px-8 rounded-xl">
+      <main className="flex flex-col items-center justify-center py-5">
+        <div className=" rounded-xl bg-stone-50 bg-opacity-5 px-8 py-4 text-stone-50">
           <Input setDrinks={setDrinks} />
         </div>
         <DrinkList drinks={drinks} />
