@@ -1,12 +1,10 @@
 import { PiBrandy, PiCheck, PiTag, PiX } from "react-icons/pi";
-import { useGlobalContext } from "../context";
+
 import Ingredient from "./Ingredient";
 
-function SingleCocktail() {
-  const { drinkDetails } = useGlobalContext();
-
+function SingleCocktail({ drinkDetails }) {
   return (
-    <div className=" bg-stone-50 bg-opacity-5 text-stone-50 py-4 px-8 rounded-xl mb-5 flex flex-col gap-3 w-full md:w-2/3 lg:flex-row lg:w-auto xl:w-2/3 ">
+    <div className=" mb-5 flex w-full flex-col gap-3 rounded-xl bg-stone-50 bg-opacity-5 px-8 py-4 text-stone-50 sm:w-2/3 md:w-auto md:flex-row xl:w-2/3 ">
       <figure className="aspect-square">
         <img
           src={drinkDetails.image}
@@ -15,7 +13,7 @@ function SingleCocktail() {
         />
       </figure>
       <div className=" flex flex-col gap-3">
-        <h2 className="text-xl font-semibold m-1 py-1 px-2 inline-block rounded-md bg-rose-700">
+        <h2 className="m-1 inline-block rounded-md bg-rose-700 px-2 py-1 text-xl font-semibold">
           {drinkDetails.name}
         </h2>
         <div className="">

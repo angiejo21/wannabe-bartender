@@ -1,13 +1,21 @@
-import { useRef } from "react";
-import { useGlobalContext } from "../context.jsx";
+import { useEffect, useState } from "react";
+import { getAllDrinks } from "../CocktailsAPI.js";
 
-function Input() {
-  const { setDrinkName } = useGlobalContext();
-  const drinkValue = useRef("");
+function Input({ setDrinks }) {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  function handleChange() {
-    setDrinkName(drinkValue.current.value);
-  }
+  useEffect(() => {
+    async function fetchAllDrinks() {
+      try {
+        const allDrinks = await getAllDrinks(searchTerm);
+        if (!allDrinks) throw Error("No drinks found");
+        setDrinks(allDrinks);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchAllDrinks();
+  }, [searchTerm, setDrinks]);
 
   return (
     <div className="flex flex-col gap-2">
@@ -17,8 +25,8 @@ function Input() {
       <input
         type="text"
         name="searchDrink"
-        ref={drinkValue}
-        onChange={handleChange}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
         className="text-stone-950 bg-stone-100 rounded-full px-2 outline-none ring ring-stone-100 ring-offset-3 focus:ring-rose-700 transition-all"
       ></input>
     </div>

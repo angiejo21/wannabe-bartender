@@ -1,10 +1,15 @@
 import { PiCheck, PiX } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 function Drink({ drink }) {
-  return (
-    <button className="w-min bg-gradient-to-tr from-rose-800 to-rose-950 p-5 rounded-xl text-stone-100 text-sm m-2 outline-none ring ring-offset-3 ring-transparent ring-3 focus:ring-rose-700 transition-all  filter grayscale active:grayscale-0 focus:grayscale-0 hover:grayscale-0 ">
-      <Link to={`/cocktail/${drink.id}`}>
+  const navigate = useNavigate()
+
+  function handleClick(e){
+    e.preventDefault();
+    navigate(`/cocktail/${drink.id}`)
+  }
+  return (    
+      <button className="w-min bg-gradient-to-tr from-rose-800 to-rose-950 p-5 rounded-xl text-stone-100 text-sm m-2 outline-none ring ring-offset-3 ring-transparent ring-3 focus:ring-rose-700 transition-all  filter grayscale active:grayscale-0 focus:grayscale-0 hover:grayscale-0 " onClick={handleClick}>
         <img
           src={drink.image}
           alt={drink.name}
@@ -24,8 +29,7 @@ function Drink({ drink }) {
             {drink.alcoholic ? <PiCheck /> : <PiX />}
           </span>
         </p>
-      </Link>
-    </button>
+      </button>    
   );
 }
 

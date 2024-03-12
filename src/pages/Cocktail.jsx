@@ -1,16 +1,9 @@
-import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useGlobalContext } from "../context";
-import Spinner from "../components/Spinner";
+import { Link, useLoaderData } from "react-router-dom";
 import SingleCocktail from "../components/SingleCocktail";
+import { getSingleDrink } from "../CocktailsAPI";
 
 function Cocktail() {
-  const { setDrinkSelected, isLoading } = useGlobalContext();
-  const { id } = useParams();
-
-  useEffect(() => {
-    setDrinkSelected(id);
-  }, [id, setDrinkSelected]);
+  const singleDrinkDetails = useLoaderData();
 
   return (
     <>
@@ -21,10 +14,17 @@ function Cocktail() {
         >
           &larr; Indietro
         </Link>
-        {isLoading ? <Spinner /> : <SingleCocktail />}
+        <SingleCocktail drinkDetails={singleDrinkDetails} />
       </main>
     </>
   );
+}
+
+export async function loader({ params }) {
+  console.log("single fetching starting");
+  const drink = await getSingleDrink(params.id);
+  if (!drink) return null;
+  return drink;
 }
 
 export default Cocktail;

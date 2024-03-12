@@ -1,22 +1,33 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Cocktail from "./pages/Cocktail";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home, { loader as allDrinksLoader } from "./pages/Home";
+
+import Cocktail, { loader as singleDrinkLoader } from "./pages/Cocktail";
+import AppLayout from "./pages/AppLayout";
+import Error from "./components/Error";
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+        loader: allDrinksLoader,
+        errorElement: <Error />,
+      },
+      {
+        path: "/cocktail/:id",
+        element: <Cocktail />,
+        loader: singleDrinkLoader,
+        errorElement: <Error />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <div className="min-h-screen bg-stone-950 font-mono grid grid-rows-[max-content_1fr_max-content]">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" index element={<Home />} />
-          <Route path="cocktail/:id" index element={<Cocktail />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
