@@ -17,4 +17,4 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-[product-screenshot]: ./screenshot.PNG
+[product-screenshot]: ./screenshot.png
